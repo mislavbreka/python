@@ -1,4 +1,5 @@
 from openpyxl import *
+import glob
 
 def invert(x):
     out=[]
@@ -56,30 +57,13 @@ def getPosition(r,c):
     lis
     return str()
 
-    
-#getIP(str(input()))
+
 IPfound = False
 
-#fileName = str(input())
 fileName = 'test.xlsx'
+print(glob.glob("*.xlsx"))
 
-try:
-    wb = load_workbook(fileName)
-    ws = wb.active
-except FileNotFoundError:
-    wb = Workbook()
-    ws = wb.active
-    
-while True:
-    c,r=1,1
-    if(ws.cell(row=r, column=c).value != None):
-        if(checkCell(ws.cell(row=r, column=c).value)):
-            print(ws.cell(row=r, column=c).value)
-            print(getIP(ws.cell(row=r, column=c).value))
-            break
-        else:
-            print('ne')
-            r+=1
-        
-    IPfound=True
+wb = load_workbook(fileName)
+ws = wb.active
+
 wb.save(fileName)
